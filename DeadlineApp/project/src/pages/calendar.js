@@ -36,16 +36,17 @@ export const MyCalendar = () => {
   };
 
   return (
-    <div className="calendar" style={{ width: "99%" }}>
+    <div className="container" style={{ width: "99%" }}>
+      <h1>hello</h1>
       <button
         onClick={() => {
           setInputForm(!showInputForm);
         }}
         className="btn btn-primary"
+        id="add"
       >
         ajouter un échéance
       </button>
-      <h1>Agenda</h1>
       {showInputForm && <AddEvent />}
 
       <FullCalendar
