@@ -37,7 +37,7 @@ export const MyCalendar = () => {
 
   return (
     <div className="container" style={{ width: "99%" }}>
-      <h1>hello</h1>
+      <br />
       <button
         onClick={() => {
           setInputForm(!showInputForm);
