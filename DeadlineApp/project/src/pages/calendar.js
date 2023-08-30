@@ -7,8 +7,8 @@ import frLocale from "@fullcalendar/core/locales/fr";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AddEvent } from "./AddEvent";
 import "../Css/calendar.css";
+
 const dayCellContent = (args) => {
-  // Customize the content and style of day cells
   return <div className="days">{args.dayNumberText}</div>;
 };
 
@@ -16,7 +16,7 @@ export const MyCalendar = () => {
   const [showInputForm, setInputForm] = useState(false);
   const [events, setEvents] = useState([
     {
-      title: "Custom Event 1",
+      title: "maintenance",
       start: "2023-09-01",
       end: "2023-09-02",
       description: "This is a custom event description.",
@@ -30,9 +30,9 @@ export const MyCalendar = () => {
       color: "red",
     },
   ]);
-  const [event, setEvent] = useState({});
+  const [selectedEvent, setSelectedEvent] = useState(null); // Track the selected event
   const handelClick = (eventInfo) => {
-    setEvent(eventInfo.event);
+    setSelectedEvent(eventInfo.event); // Set the selected event
   };
 
   return (
@@ -55,7 +55,6 @@ export const MyCalendar = () => {
         events={events}
         eventClick={handelClick}
         height="600px"
-        // dayCellContent={dayCellContent}
         headerToolbar={{
           left: "prev,next today",
           center: "title",
@@ -63,14 +62,16 @@ export const MyCalendar = () => {
         }}
         dayCellContent={dayCellContent}
         locale={frLocale}
-        eventLimit={true} // Enable event limiting
-        eventLimitText="more"
       />
-      {console.log(FullCalendar)}
-      <div style={{ position: "relative", left: "120%", bottom: "700px" }}>
-        <h2>event details</h2>
-        <p>event title:{event.title}</p>
-      </div>
+
+      {/* Display the event description */}
+      {selectedEvent && (
+        <div className="event-details">
+          <h2>Event Details</h2>
+          <p>Title: {selectedEvent.title}</p>
+          <p>Description: {selectedEvent.extendedProps.description}</p>
+        </div>
+      )}
     </div>
   );
 };
