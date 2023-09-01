@@ -6,7 +6,8 @@ import listPlugin from "@fullcalendar/list";
 import frLocale from "@fullcalendar/core/locales/fr";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AddEvent } from "./AddEvent";
-import "../Css/calendar.css";
+import { ModifyEvent } from "./ModifyEvent";
+import "../../Css/calendar.css";
 
 const dayCellContent = (args) => {
   return <div className="days">{args.dayNumberText}</div>;
@@ -19,15 +20,26 @@ export const MyCalendar = () => {
       title: "maintenance",
       start: "2023-09-01",
       end: "2023-09-02",
-      description: "This is a custom event description.",
-      image: "",
+      objet: "This is a custom event description.",
+      frequence: "m",
     },
     {
       title: "Custom Event 2",
       start: "2023-09-05",
       end: "2023-09-07",
-      description: "This is annother custom event description.",
+      objet: "This is annother custom event description.",
       color: "red",
+    },
+    {
+      title: "Weekly Recurring Event",
+      start: "2023-09-06T10:00:00",
+      end: "2023-09-06T12:00:00",
+      daysOfWeek: [1], // Tuesday (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+      recurring: {
+        daysOfWeek: [1], // Recur on Tuesdays
+        startRecur: "2023-09-06", // Start date for recurrence
+        endRecur: "2023-12-31", // End date for recurrence
+      },
     },
   ]);
   const [selectedEvent, setSelectedEvent] = useState(null); // Track the selected event
@@ -47,7 +59,7 @@ export const MyCalendar = () => {
       >
         ajouter un échéance
       </button>
-      {showInputForm && <AddEvent />}
+      {showInputForm && <AddEvent hide={setInputForm} />}
 
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, listPlugin]}
@@ -62,16 +74,10 @@ export const MyCalendar = () => {
         }}
         dayCellContent={dayCellContent}
         locale={frLocale}
+        eventClassNames={"events"}
       />
-
-      {/* Display the event description */}
-      {selectedEvent && (
-        <div className="event-details">
-          <h2>Event Details</h2>
-          <p>Title: {selectedEvent.title}</p>
-          <p>Description: {selectedEvent.extendedProps.description}</p>
-        </div>
-      )}
+      {console.log(selectedEvent)}
+      {selectedEvent && <ModifyEvent hide={setSelectedEvent} />}
     </div>
   );
 };

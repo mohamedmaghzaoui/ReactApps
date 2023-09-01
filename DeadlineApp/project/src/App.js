@@ -1,9 +1,10 @@
-import { MyCalendar } from "./pages/calendar";
+import { MyCalendar } from "./pages/Calendar/calendar";
 import { Home } from "./pages/Home";
 import { Navbar } from "./pages/navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import { Calendar } from "react-big-calendar";
+import { Login } from "./pages/account/login";
+import { SignIn } from "./pages/account/sign";
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/calendar" element={<MyCalendar />} />
+          <Route path="/Calendrier" element={<MyCalendar />} />
+          <Route path="/connecter" element={<Login />} />
+          <Route path="/s'inscrire" element={<SignIn />} />
           <Route path="*" element={<h1>page not available</h1>} />
         </Routes>
       </Router>

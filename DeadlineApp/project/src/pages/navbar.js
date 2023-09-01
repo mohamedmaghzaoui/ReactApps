@@ -23,20 +23,23 @@ export const Navbar = () => {
             <Link
               id="calendar"
               style={{ textDecoration: "none" }}
-              to={"/calendar"}
+              to={"/calendrier"}
             >
               Calendrier
             </Link>
           </td>
         </ul>
         <span className="connect">
-          <Link id="login">
+          <Link to={"/connecter"} id="login">
             <pre>Se connecter</pre>
           </Link>
           <p>Ou</p>
-          <button id="sign" className="btn btn-primary">
-            S'inscrire
-          </button>
+
+          <Link to={"/s'inscrire"}>
+            <button id="sign" className="btn btn-primary">
+              S'inscrire
+            </button>
+          </Link>
         </span>
       </nav>
       <hr className="custom-hr" />
