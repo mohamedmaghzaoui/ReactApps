@@ -12,6 +12,13 @@ import "../../Css/calendar.css";
 const dayCellContent = (args) => {
   return <div className="days">{args.dayNumberText}</div>;
 };
+const eventContent = (arg) => {
+  return (
+    <div className={`events ${arg.event.backgroundColor}`}>
+      <span className="red-text">{arg.timeText}</span> {arg.event.title}
+    </div>
+  );
+};
 
 export const MyCalendar = () => {
   const [showInputForm, setInputForm] = useState(false);
@@ -28,7 +35,7 @@ export const MyCalendar = () => {
       start: "2023-09-05",
       end: "2023-09-07",
       objet: "This is annother custom event description.",
-      color: "red",
+      color: "normal",
     },
     {
       title: "Weekly Recurring Event",
@@ -42,13 +49,14 @@ export const MyCalendar = () => {
       },
     },
   ]);
+
   const [selectedEvent, setSelectedEvent] = useState(null); // Track the selected event
   const handelClick = (eventInfo) => {
     setSelectedEvent(eventInfo.event); // Set the selected event
   };
 
   return (
-    <div className="container" style={{ width: "99%" }}>
+    <div className="container" style={{ width: "99%", color: "black" }}>
       <br />
       <button
         onClick={() => {
@@ -75,6 +83,7 @@ export const MyCalendar = () => {
         dayCellContent={dayCellContent}
         locale={frLocale}
         eventClassNames={"events"}
+        eventContent={eventContent}
       />
       {console.log(selectedEvent)}
       {selectedEvent && <ModifyEvent hide={setSelectedEvent} />}

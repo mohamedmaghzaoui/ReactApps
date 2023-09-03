@@ -4,12 +4,16 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 export const AddEvent = (props) => {
+  {
+    /* validation schema using yup */
+  }
   const validation = yup.object().shape({
     title: yup.string().required("Le titre est requis"),
     object: yup.string().required("L'objet est requis"),
     client: yup.string().required("Le client est requis"),
     concernedPerson: yup.string().required("La personne concernée est requise"),
     frequence: yup.string().required("La fréquence est requise"),
+    color: yup.string().required("le couleur est requis"),
     start: yup.date().required("La date de début est requise").nullable(),
     end: yup.date().required("La date de fin est requise").nullable(),
   });
@@ -75,38 +79,105 @@ export const AddEvent = (props) => {
         <div className="frequence" style={{ display: "flex" }}>
           <label>Frequence</label>
           <br />
-          <label>
+          <label className="form-check-label">
             <input
-              className="form-control"
+              className="form-check-input"
               style={{ marginLeft: "5px" }}
-              name="frequence"
               type="radio"
               value="yearly"
-              {...register("frequence")}
+              {...register("frequence")} // Unique name attribute for frequence
+              name="frequence" // Add this
             />
             Annuel
           </label>
-          <label style={{ position: "relative", left: "5%" }}>
+          <label
+            className="form-check-label"
+            style={{ position: "relative", left: "5%" }}
+          >
             <input
-              className="form-control"
-              name="frequence"
+              className="form-check-input"
               type="radio"
               value="monthly"
-              {...register("frequence")}
+              {...register("frequence")} // Unique name attribute for frequence
+              name="frequence" // Add this
             />
             Mensuelle
           </label>
-          <label style={{ position: "relative", left: "30px" }}>
+          <label
+            className="form-check-label"
+            style={{ position: "relative", left: "30px" }}
+          >
             <input
-              className="form-control"
-              name="statue"
+              className="form-check-input"
               type="radio"
               value="weekly"
-              {...register("frequence")}
+              {...register("frequence")} // Unique name attribute for frequence
+              name="frequence" // Add this
             />
             Hebdo
           </label>
         </div>
+        {/* colors inputs in radio */}
+        <div className="frequence" style={{ display: "flex" }}>
+          <label>Couleur</label>
+          <br />
+          <label>
+            {/* red color */}
+            <input
+              className="form-check-input"
+              style={{ marginLeft: "5px", backgroundColor: "red" }}
+              type="radio"
+              value="red"
+              {...register("color")} // Unique name attribute for color
+              name="color" // Add this
+            />
+          </label>
+          <label>
+            {/* green color */}
+            <input
+              className="form-check-input"
+              style={{ marginLeft: "7px", backgroundColor: "green" }}
+              type="radio"
+              value="green"
+              {...register("color")} // Unique name attribute for color
+              name="color" // Add this
+            />
+          </label>
+          {/* purple color */}
+          <label>
+            <input
+              className="form-check-input"
+              style={{ marginLeft: "9px", backgroundColor: "purple" }}
+              type="radio"
+              value="purple"
+              {...register("color")} // Unique name attribute for color
+              name="color" // Add this
+            />
+          </label>
+          {/* royalblue color */}
+          <label>
+            <input
+              className="form-check-input"
+              style={{ marginLeft: "11px", backgroundColor: "royalblue" }}
+              type="radio"
+              value="royalblue"
+              {...register("color")} // Unique name attribute for color
+              name="color" // Add this
+            />
+          </label>
+          {/* default color */}
+          <label>
+            <input
+              className="form-check-input"
+              style={{ marginLeft: "13px", backgroundColor: "#6495ED" }}
+              type="radio"
+              value="normal"
+              {...register("color")} // Unique name attribute for color
+              name="color" // Add this
+            />
+          </label>
+        </div>
+
         {/* start and end date inputs*/}
         <label>
           <span>

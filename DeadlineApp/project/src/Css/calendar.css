@@ -17,6 +17,10 @@
   right: 23%;
   top: 4%;
 }
+
 .events:hover {
   cursor: pointer;
+}
+.eventText {
+  font-weight: bold;
 }
