@@ -28,8 +28,6 @@ export const ModifyEvent = (props) => {
         <br />
         <input type="text" className="form-control" placeholder="objet" />
         <br />
-        <input type="text" className="form-control" placeholder="fréquence" />
-        <br />
         <input type="text" className="form-control" placeholder="client" />
         <br />
         <input
@@ -38,6 +36,38 @@ export const ModifyEvent = (props) => {
           placeholder="Personne Concerné"
         />
         <br />
+        <div className="frequence" style={{ display: "flex" }}>
+          <label>Frequence</label>
+          <br />
+          <label>
+            <input
+              className="form-control"
+              style={{ marginLeft: "5px" }}
+              name="statue"
+              type="radio"
+              value="yearly"
+            />
+            Annuel
+          </label>
+          <label style={{ position: "relative", left: "5%" }}>
+            <input
+              className="form-control"
+              name="statue"
+              type="radio"
+              value="monthly"
+            />
+            Mensuelle
+          </label>
+          <label style={{ position: "relative", left: "30px" }}>
+            <input
+              className="form-control"
+              name="statue"
+              type="radio"
+              value="weekly"
+            />
+            Hebdo
+          </label>
+        </div>
         <label>
           <span>
             commencé

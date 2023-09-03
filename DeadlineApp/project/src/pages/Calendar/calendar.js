@@ -34,7 +34,7 @@ export const MyCalendar = () => {
       title: "Weekly Recurring Event",
       start: "2023-09-06T10:00:00",
       end: "2023-09-06T12:00:00",
-      daysOfWeek: [1], // Tuesday (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+      daysOfWeek: [0], // Tuesday (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
       recurring: {
         daysOfWeek: [1], // Recur on Tuesdays
         startRecur: "2023-09-06", // Start date for recurrence
